@@ -1,0 +1,28 @@
+
+/* Global reset & base */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji";
+  color: #0f172a;
+  background: #f7fafc;
+}
+
+/* Make these CSS variables available app-wide */
+:root{
+  --ikea-blue:#0B5FA5;
+  --ikea-blue-dark:#084e87;
+  --ikea-yellow:#FFDA1A;
+  --surface:#ffffff;
+  --border:#e6e8ee;
+  --text:#0f172a;
+  --muted:#64748b;
+  --bg-start:#e9f3ff;
+  --bg-end:#f7fafc;
+}
+
+/* Optional: smooth fonts */
+@supports (font-variation-settings: normal) {
+  body { font-synthesis-weight: none; }
+}

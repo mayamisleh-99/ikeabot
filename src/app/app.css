@@ -1,0 +1,462 @@
+/* IKEA Font Matching CSS */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f4fd 0%, #d6e9f7 100%);
+    min-height: 100vh;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #265b9e 100%);
+    color: white;
+    padding: 24px 32px;
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.header-icon {
+    background: #ffd500;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #333333;
+}
+
+.header-content h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+.header-content p {
+    font-size: 16px;
+    opacity: 0.9;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+/* Main Content */
+.main-content {
+    background: white;
+    border-radius: 0 0 16px 16px;
+    padding: 48px 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.welcome-section h2 {
+    font-size: 32px;
+    color: #333333;
+    margin-bottom: 16px;
+    font-weight: 500;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: -0.01em;
+}
+
+.welcome-section p {
+    font-size: 18px;
+    color: #666666;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+/* Product Finder Section */
+.product-finder {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 32px;
+    border: 1px solid #e9ecef;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.section-icon {
+    color: #2e5aa8;
+}
+
+.section-header h3 {
+    font-size: 24px;
+    color: #333333;
+    font-weight: 500;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: -0.01em;
+}
+
+.section-subtitle {
+    color: #666666;
+    font-size: 16px;
+    margin-bottom: 32px;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+/* Tab Navigation */
+.tab-navigation {
+    display: flex;
+    margin-bottom: 32px;
+    background: white;
+    border-radius: 8px;
+    padding: 4px;
+    border: 1px solid #e9ecef;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 16px 24px;
+    border: none;
+    background: transparent;
+    color: #666666;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: 0;
+    transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+    background: #265b9e;
+    color: white;
+    font-weight: 500;
+}
+
+.tab-btn:hover:not(.active) {
+    background: #f8f9fa;
+    color: #4a90e2;
+}
+
+/* Form Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.field-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #333333;
+    font-weight: 500;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: 0;
+}
+
+.field-icon {
+    color: #666666;
+}
+
+.required {
+    color: #e74c3c;
+}
+
+.form-input {
+    padding: 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+    transition: border-color 0.2s ease;
+    background: white;
+    color: #333333;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #265b9e;
+}
+
+.form-input::placeholder {
+    color: #adb5bd;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+/* Search Button */
+.search-btn {
+    background: linear-gradient(135deg, #ffd500 0%, #ffcc00 100%);
+    color: #333333;
+    border: none;
+    padding: 18px 48px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 auto;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(255, 213, 0, 0.3);
+}
+
+.search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 213, 0, 0.4);
+}
+
+.search-btn:active {
+    transform: translateY(0);
+}
+
+/* QR Scanner Tab Content */
+.qr-scanner {
+    display: none;
+    text-align: center;
+    padding: 48px 32px;
+}
+
+.qr-scanner.active {
+    display: block;
+}
+
+.qr-icon {
+    color: #265b9e;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.qr-scanner h3 {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 16px;
+    font-weight: 500;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: -0.01em;
+}
+
+.qr-scanner p {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 32px;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+/* Error Message Styles */
+.error-message {
+    background: #fee;
+    border: 1px solid #fcc;
+    color: #c33;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.error-close {
+    background: none;
+    border: none;
+    color: #c33;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.error-close:hover {
+    background: rgba(204, 51, 51, 0.1);
+}
+
+/* Search Result Styles */
+.search-result {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.search-result h3 {
+    color: #0c4a6e;
+    font-size: 20px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: -0.01em;
+}
+
+.product-info {
+    background: white;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.product-info h4 {
+    color: #333333;
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: 500;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: 0;
+}
+
+.product-info p {
+    margin-bottom: 8px;
+    color: #666666;
+    font-weight: 400;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: 0;
+}
+
+.product-info p:last-child {
+    margin-bottom: 0;
+}
+
+.reset-btn {
+    background: #6b7280;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: 0;
+    transition: background-color 0.2s ease;
+}
+
+.reset-btn:hover {
+    background: #4b5563;
+}
+
+/* Form Error Styles */
+.form-input.error {
+    border-color: #e74c3c;
+    background-color: #fef9f9;
+}
+
+.field-error {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+    font-weight: 400;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: 0;
+}
+
+/* Loading State */
+.search-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.search-btn:disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(255, 213, 0, 0.3);
+}
+
+/* Focus Styles for Keyboard Navigation */
+.tab-btn:focus,
+.search-btn:focus,
+.form-input:focus {
+    outline: 2px solid #4a90e2;
+    outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .header {
+        padding: 20px 24px;
+    }
+
+    .header-content h1 {
+        font-size: 24px;
+    }
+
+    .main-content {
+        padding: 32px 24px;
+    }
+
+    .welcome-section h2 {
+        font-size: 28px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .tab-navigation {
+        flex-direction: column;
+    }
+
+    .product-finder {
+        padding: 24px;
+    }
+}

@@ -1,0 +1,199 @@
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <div class="header-icon">
+      <lucide-icon [img]="icons.ShoppingCart" size="24"></lucide-icon>
+    </div>
+    <div class="header-content">
+      <h1>IKEA Guide Robot</h1>
+      <p>Find your products effortlessly</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+      <h2>Welcome to IKEA</h2>
+      <p>Let me help you find your products quickly and easily. You can either scan a product QR code or enter the product details manually.</p>
+    </div>
+
+    <!-- Error Message -->
+    @if (errorMessage()) {
+      <div class="error-message">
+        {{ errorMessage() }}
+        <button type="button" (click)="clearError()" class="error-close">
+          <lucide-icon [img]="icons.X" size="16"></lucide-icon>
+        </button>
+      </div>
+    }
+
+    <!-- Search Result -->
+    @if (searchResult()) {
+      <div class="search-result">
+        <h3>Product Found!</h3>
+        <div class="product-info">
+          <h4>{{ searchResult().name }}</h4>
+          <p><strong>Article Number:</strong> {{ searchResult().articleNumber }}</p>
+          <p><strong>Price:</strong> {{ searchResult().price }}</p>
+          <p><strong>Availability:</strong> {{ searchResult().availability }}</p>
+          @if (searchResult().color) {
+            <p><strong>Color:</strong> {{ searchResult().color }}</p>
+          }
+          @if (searchResult().dimensions) {
+            <p><strong>Dimensions:</strong> {{ searchResult().dimensions }}</p>
+          }
+        </div>
+        <button type="button" (click)="resetForm()" class="reset-btn">Search Again</button>
+      </div>
+    }
+
+    <!-- Product Finder -->
+    <div class="product-finder">
+      <div class="section-header">
+        <div class="section-icon">
+          <lucide-icon [img]="icons.Search" size="24"></lucide-icon>
+        </div>
+        <h3>Find Your Product</h3>
+      </div>
+      <p class="section-subtitle">Choose how you'd like to search for your IKEA product</p>
+
+      <!-- Tab Navigation -->
+      <div class="tab-navigation">
+        <button 
+          type="button"
+          class="tab-btn"
+          [class.active]="activeTab() === 'qr'"
+          (click)="switchTab('qr')">
+          <lucide-icon [img]="icons.QrCode" size="18"></lucide-icon>
+          Scan QR Code
+        </button>
+        <button 
+          type="button"
+          class="tab-btn"
+          [class.active]="activeTab() === 'manual'"
+          (click)="switchTab('manual')">
+          <lucide-icon [img]="icons.Edit" size="18"></lucide-icon>
+          Manual Entry
+        </button>
+      </div>
+
+      <!-- QR Scanner Content -->
+      @if (activeTab() === 'qr') {
+        <div class="qr-scanner active">
+          <div class="qr-icon">
+            <lucide-icon [img]="icons.QrCode" size="72"></lucide-icon>
+          </div>
+          <h3>Scan QR Code</h3>
+          <p>Point your camera at the QR code on your IKEA product to get instant information.</p>
+          <button type="button" class="search-btn" (click)="startQrScanner()">
+            <lucide-icon [img]="icons.QrCode" size="20"></lucide-icon>
+            Start Scanner
+          </button>
+        </div>
+      }
+
+      <!-- Manual Entry Form -->
+      @if (activeTab() === 'manual') {
+        <div class="manual-entry">
+          <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="field-label">
+                  <lucide-icon [img]="icons.Tag" size="18" class="field-icon"></lucide-icon>
+                  Article Number
+                  <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  class="form-input"
+                  [class.error]="hasFieldError('articleNumber')"
+                  formControlName="articleNumber"
+                  placeholder="e.g., 123.456.78"
+                  (input)="formatArticleNumber($event)"
+                  maxlength="11">
+                @if (getFieldError('articleNumber')) {
+                  <span class="field-error">{{ getFieldError('articleNumber') }}</span>
+                }
+              </div>
+              
+              <div class="form-group">
+                <label class="field-label">
+                  <lucide-icon [img]="icons.Tag" size="18" class="field-icon"></lucide-icon>
+                  Product Name
+                  <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  class="form-input"
+                  formControlName="productName"
+                  placeholder="e.g., BILLY Bookcase">
+              </div>
+              
+              <div class="form-group">
+                <label class="field-label">
+                  <lucide-icon [img]="icons.Palette" size="18" class="field-icon"></lucide-icon>
+                  Color
+                </label>
+                <input 
+                  type="text" 
+                  class="form-input"
+                  formControlName="color"
+                  placeholder="e.g., White, Oak veneer">
+              </div>
+              
+              <div class="form-group">
+                <label class="field-label">
+                  <lucide-icon [img]="icons.Ruler" size="18" class="field-icon"></lucide-icon>
+                  Dimensions
+                </label>
+                <input 
+                  type="text" 
+                  class="form-input"
+                  formControlName="dimensions"
+                  placeholder="e.g., 80×28×202 cm">
+              </div>
+              
+              <div class="form-group">
+                <label class="field-label">
+                  <lucide-icon [img]="icons.Folder" size="18" class="field-icon"></lucide-icon>
+                  Series
+                </label>
+                <input 
+                  type="text" 
+                  class="form-input"
+                  formControlName="series"
+                  placeholder="e.g., BILLY, MALM, KALLAX">
+              </div>
+              
+              <div class="form-group">
+                <label class="field-label">
+                  <lucide-icon [img]="icons.Folder" size="18" class="field-icon"></lucide-icon>
+                  Category
+                </label>
+                <input 
+                  type="text" 
+                  class="form-input"
+                  formControlName="category"
+                  placeholder="e.g., Bookcases, Beds, Storage">
+              </div>
+            </div>
+
+            <button 
+              type="submit" 
+              class="search-btn"
+              [disabled]="isLoading()">
+              <lucide-icon [img]="icons.Search" size="20"></lucide-icon>
+              @if (isLoading()) {
+                Searching...
+              } @else {
+                Find My Product
+              }
+            </button>
+          </form>
+        </div>
+      }
+    </div>
+  </div>
+  
+</div>
